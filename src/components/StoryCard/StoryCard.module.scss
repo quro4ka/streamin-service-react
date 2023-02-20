@@ -1,0 +1,38 @@
+@import './../../scss/variables.scss';
+
+.wrapper {
+    border-bottom: 8px solid rgb(36, 36, 36);
+}
+
+.card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 70px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+    &__reverse {
+        flex-direction: row-reverse;
+    }
+
+    &__content {
+        width: 50%;
+        color: $primaryColor;
+        &_title {
+            font-size: 50px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        &_text {
+            font-size: 26px;
+        }
+    }
+}
+
+.img {
+    width: 504px;
+    height: 378px;
+}

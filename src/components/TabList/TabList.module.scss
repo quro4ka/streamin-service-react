@@ -1,0 +1,13 @@
+
+.list {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 50px 0;
+    // background-color: aqua;
+    border-bottom: 8px solid rgb(36, 36, 36);
+    &__title {
+        font-size: 40px;
+        margin-bottom: 50px;
+    }
+}
