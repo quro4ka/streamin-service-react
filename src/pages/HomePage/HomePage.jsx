@@ -1,19 +1,20 @@
-import { Footer } from '../../components/Footer/Footer'
-import { Header } from '../../components/Header/Header'
-import { Poster } from '../../components/Poster/Poster'
-import { StoryCard } from '../../components/StoryCard/StoryCard'
-import { StoryCardList } from '../../components/StoryCardList/StoryCardList'
-import { TabList } from '../../components/TabList/TabList'
+import { useEffect, useState } from 'react'
+import { requests } from '../../api/requests'
 import styles from './HomePage.module.scss'
+import { useNavigate } from 'react-router-dom'
+import { PopularCard } from './../../components/PopularСard/PopularCard'
+import { MovieCardList } from '../../components/MovieCardList/MovieCardList'
+import { getAuth, onAuthStateChanged } from 'firebase/auth'
 
 export const HomePage = () => {
+  const [isAuth, setIsAuth] = useState(false)
+  const navigate = useNavigate()
+
   return (
-    <div className={styles.home}>
-      <Header />
-      <Poster />
-      <StoryCardList />
-      <TabList />
-      <Footer />
+    <div>
+      <PopularCard />
+      <MovieCardList title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} />
+      <MovieCardList title="Trending" fetchUrl={requests.fetchTrending} />
     </div>
   )
 }

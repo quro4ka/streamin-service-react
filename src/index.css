@@ -21,3 +21,13 @@ a {
     color: #fff;
     text-decoration: none;
 }
+
+/* SWIPER */
+
+.swiper-pagination-bullet {
+    background-color: #fff;
+}
+
+.swiper-pagination-bullet-active {
+    background-color: #707d45 !important;
+}

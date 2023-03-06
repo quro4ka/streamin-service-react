@@ -1,0 +1,45 @@
+.wrapper {
+    width: 100%;
+    max-width: 1240px;
+    margin: 0 auto;
+}
+
+.movie {
+    padding-top: 100px;
+    display: flex;
+    justify-content: space-between;
+
+    &__img {
+        width: 720px;
+        height: 410px;
+    }
+
+    &__left {
+        
+    }
+
+    &__right {
+        width: 40%;
+        text-align: center;
+    }
+
+    &__title {
+        margin-bottom: 20px;
+    }
+
+    &__date {
+        margin-bottom: 10px;
+    }
+
+    &__country {
+        margin-bottom: 10px;
+    }
+
+    &__lang {
+        margin-bottom: 10px;
+    }
+
+    &__desc {
+        margin-bottom: 20px;
+    }
+}

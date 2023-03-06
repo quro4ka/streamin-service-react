@@ -1,0 +1,27 @@
+.card {
+    width: 200px;
+    height: 300px;
+   
+    &__img {
+        width: 100%;
+        height: 300px;
+        padding-bottom: 40px;
+        cursor: pointer;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .card {
+        // width: 200px;
+        // height: 400px;
+        
+    
+        &__img {
+           
+            width: 100%;
+            height: 500px;
+            
+            padding-bottom: 40px;
+        }
+    }
+}

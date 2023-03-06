@@ -8,11 +8,21 @@
     align-items: center;
     padding: 30px 50px;
     z-index: 5;
-    // background-color: rgba(128, 128, 128, 0.505);
+    transition: all .3s ease-in-out;
+    
+    &__scroll {
+        position: fixed;
+        background-color: #000000;
+    }
 
     &__logo {
         color: $primaryColor;
-
+         
+        &_adaptive {
+            font-size: 20px;
+            display: none;
+        }
+        
         &:hover {
             cursor: pointer;
         }
@@ -24,45 +34,73 @@
         justify-content: space-between;
     }
 
-   
+        
+
 }
 
-.btn {
-    width: 100px;
-    padding: 6px 12px;
-    font-size: 20px;
-    border: 0;
-    outline: none;
-    // background-color: rgb(226, 72, 72);
-    background-color: $primaryBtnBg;
-    color: $primaryBtnColor;
-    border-radius: 5px;
-    margin-right: 20px;
+// .btn {
+//     width: 100px;
+//     padding: 6px 12px;
+//     font-size: 20px;
+//     border: 0;
+//     outline: none;
+//     // background-color: rgb(226, 72, 72);
+//     background-color: $primaryBtnBg;
+//     color: $primaryBtnColor;
+//     border-radius: 5px;
+//     margin-right: 20px;
 
-    &:last-child {
-        margin-right: 0;
-    }
+//     &:last-child {
+//         margin-right: 0;
+//     }
 
-    &:hover {
-        cursor: pointer;
-    }
+//     &:hover {
+//         cursor: pointer;
+//     }
 
 
-    &_up {
-        transition: all .3s ease-in-out;
-        &:hover {
-            background-color: rgb(231, 54, 54);            
-        }
-    }
+//     &_up {
+//         transition: all .3s ease-in-out;
+//         &:hover {
+//             background-color: rgb(231, 54, 54);            
+//         }
+//     }
 
-    &_in {
-        background-color: transparent;
-        transition: all .3s ease-in-out;
-        border: 1px solid transparent;
-        &:hover {
-            background-color: rgba(128, 128, 128, 0.2);
-            border: 1px solid $primaryBtnColor;
-        }
-    }
+//     &_in {
+//         background-color: transparent;
+//         transition: all .3s ease-in-out;
+//         border: 1px solid transparent;
+//         &:hover {
+//             background-color: rgba(128, 128, 128, 0.2);
+//             border: 1px solid $primaryBtnColor;
+//         }
+//     }
     
+// }
+
+@media screen and (max-width: 750px){
+    .header {
+        padding: 20px 15px;
+
+        &__logo {
+            font-size: 20px;
+        }
+
+    }
+}
+
+@media screen and (max-width: 500px){
+    .header {
+       
+
+        &__logo {
+
+            display: none;
+            &_adaptive {
+                font-size: 20px;
+                display: block;
+            }
+        }
+
+    }
 }

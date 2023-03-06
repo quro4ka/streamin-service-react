@@ -30,7 +30,6 @@
 }
 
 .other {
-    // margin-top: 20px;
 
     &__title {
         padding-bottom: 5px;
@@ -40,5 +39,12 @@
         &:hover {
             border-bottom: 1px solid red;
         }
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .form {
+        padding: 40px;
+        min-width: 0px;
     }
 }

@@ -1,10 +1,18 @@
 import cn from 'classnames'
 import styles from './Button.module.scss'
 
-export const Button = ({ children, active, width }) => {
-  const widthStyle = width ? { width: '100%' } : {}
+export const Button = ({ children, mr, red, transparent, width }) => {
+  let btnStyles = ''
+  if (red) {
+    btnStyles = cn(styles.btn, styles.btn_up)
+  }
+
+  if (transparent) {
+    btnStyles = cn(styles.btn, styles.btn_in)
+  }
+
   return (
-    <button style={widthStyle} className={cn(styles.btn, active ? styles.btn_up : styles.btn_in)}>
+    <button style={{ marginRight: mr, width: width }} className={btnStyles}>
       {children}
     </button>
   )

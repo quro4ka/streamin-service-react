@@ -1,20 +1,15 @@
 @import './../../scss/variables.scss';
 
 .btn {
-    width: 100px;
+    width: 100%;
     padding: 6px 12px;
     font-size: 20px;
     border: 0;
     outline: none;
-    // background-color: rgb(226, 72, 72);
     background-color: $primaryBtnBg;
     color: $primaryBtnColor;
     border-radius: 5px;
-    margin-right: 20px;
-
-    // &:last-child {
-    //     margin-right: 0;
-    // }
+   
 
     &:hover {
         cursor: pointer;
@@ -38,4 +33,12 @@
         }
     }
     
+}
+
+@media screen and (max-width: 750px){
+    .btn {
+        width: 80px;
+        font-size: 16px; 
+
+    }
 }

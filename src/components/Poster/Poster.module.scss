@@ -1,6 +1,7 @@
 @import '../../scss/variables.scss';
 
 .overlay {
+    height: 100vh;
     background-color: #00000083;
     position: absolute;
     top: 0;
@@ -41,5 +42,18 @@
         text-align: center;
         color: $primaryColor;
         margin-top: 20px;
+    }
+}
+
+@media screen and (max-width: 750px) {
+    .content {
+
+        &__title {
+            font-size: 28px;
+        }
+
+        &__text {
+            font-size: 16px;
+        }
     }
 }

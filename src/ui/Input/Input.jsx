@@ -1,12 +1,27 @@
 import { useState } from 'react'
 import styles from './Input.module.scss'
 
-export const Input = ({ title = '', email, password, required }) => {
-  const [value, setValue] = useState('')
+export const Input = ({
+  title = '',
+  email,
+  setEmail,
+  password,
+  setPassword,
+  isEmail,
+  isPassword,
+  required,
+}) => {
   const [blur, setBlur] = useState(false)
 
   const handleChange = (e) => {
-    setValue(e.target.value)
+    if (isEmail) {
+      setEmail(e.target.value)
+      // console.log(e.target.value)
+    }
+    if (isPassword) {
+      setPassword(e.target.value)
+      // console.log(e.target.value)
+    }
   }
 
   const handleBlur = (e) => {
@@ -20,14 +35,16 @@ export const Input = ({ title = '', email, password, required }) => {
         type="text"
         required={required}
         placeholder={title}
-        value={value}
+        value={isEmail ? email : password}
         onChange={handleChange}
         onBlur={handleBlur}
       />
       <p style={{ color: 'orange' }}>
-        {blur && password && value.length < 6 ? 'Пароль меньше 6 символов' : ''}
+        {blur && isPassword && password.length < 6 ? 'Пароль меньше 6 символов' : ''}
       </p>
-      <p style={{ color: 'orange' }}>{blur && email && value.length < 6 ? 'Неверный email' : ''}</p>
+      <p style={{ color: 'orange' }}>
+        {blur && isEmail && email.length < 6 ? 'Неверный email' : ''}
+      </p>
     </>
   )
 }
