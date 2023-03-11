@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { requests } from '../../api/requests'
 import styles from './HomePage.module.scss'
+import { Button } from '../../ui/Button/Button'
 import { useNavigate } from 'react-router-dom'
 import { PopularCard } from './../../components/PopularСard/PopularCard'
 import { MovieCardList } from '../../components/MovieCardList/MovieCardList'
@@ -13,8 +14,9 @@ export const HomePage = () => {
   return (
     <div>
       <PopularCard />
-      <MovieCardList title="Netflix Originals" fetchUrl={requests.fetchNetflixOriginals} />
-      <MovieCardList title="Trending" fetchUrl={requests.fetchTrending} />
+      <MovieCardList title="Netflix Originals" fetchUrl={requests.fetchTrending} />
+      <MovieCardList title="Trending" fetchUrl={requests.fetchNetflixOriginals} />
+      <MovieCardList title="Kids Popular" fetchUrl={requests.fetchKidsPopular} />
     </div>
   )
 }

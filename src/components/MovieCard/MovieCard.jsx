@@ -7,7 +7,6 @@ import { Link } from 'react-router-dom'
 import styles from './MovieCard.module.scss'
 
 export const MovieCard = ({ movie }) => {
-  console.log(movie)
   return (
     <Link to={`movie/${movie?.id}`}>
       <div className={styles.card__img}>

@@ -7,15 +7,24 @@ import { HomePage } from './pages/HomePage/HomePage'
 import { useEffect } from 'react'
 import { ProfilePage } from './pages/ProfilePage/ProfilePage'
 import { MoviePage } from './pages/MoviePage/MoviePage'
+import { useDispatch } from 'react-redux'
+import { setUser } from './redux/slices/userSlice'
 
 function App() {
   const auth = getAuth()
   const navigate = useNavigate()
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const authChanged = onAuthStateChanged(auth, (user) => {
       if (user) {
-        console.log(user)
+        dispatch(
+          setUser({
+            email: user.email,
+            token: user.accessToken,
+            id: user.uid,
+          }),
+        )
         navigate('/')
       } else {
         navigate('/start')

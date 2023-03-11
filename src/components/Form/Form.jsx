@@ -3,11 +3,13 @@ import { Link } from 'react-router-dom'
 import { Input } from '../../ui/Input/Input'
 import { Button } from './../../ui/Button/Button'
 import styles from './Form.module.scss'
-import { auth } from '../../firebase'
+import { setUser } from '../../redux/slices/userSlice'
 import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth'
+import { useDispatch } from 'react-redux'
 
 export const Form = ({ title = '', login, register }) => {
   const auth = getAuth()
+  const dispatch = useDispatch()
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -16,26 +18,33 @@ export const Form = ({ title = '', login, register }) => {
     e.preventDefault()
 
     if (register) {
-      console.log('register')
-      console.log({
-        email,
-        password,
-      })
-
       createUserWithEmailAndPassword(auth, email, password)
-        .then((authUser) => console.log(authUser))
+        .then(({ user }) => {
+          console.log(user)
+          dispatch(
+            setUser({
+              email: user.email,
+              token: user.accessToken,
+              id: user.uid,
+            }),
+          )
+        })
         .catch((err) => alert(err.message))
     }
 
     if (login) {
-      console.log('login')
-      console.log({
-        email,
-        password,
-      })
-
       signInWithEmailAndPassword(auth, email, password)
-        .then((authUser) => console.log(authUser))
+        .then(({ user }) => {
+          console.log(user)
+
+          dispatch(
+            setUser({
+              email: user.email,
+              token: user.accessToken,
+              id: user.uid,
+            }),
+          )
+        })
         .catch((err) => alert(err))
     }
   }

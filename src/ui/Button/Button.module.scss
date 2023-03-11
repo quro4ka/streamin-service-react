@@ -6,24 +6,26 @@
     font-size: 20px;
     border: 0;
     outline: none;
-    background-color: $primaryBtnBg;
+    background-color: rgb(154, 184, 127);
     color: $primaryBtnColor;
     border-radius: 5px;
-   
+    transition: all .3s ease-in-out;
 
     &:hover {
         cursor: pointer;
+        background-color: rgb(140, 168, 116);
     }
 
 
-    &_up {
+    &_red {
+        background-color: $primaryBtnBg;
         transition: all .3s ease-in-out;
         &:hover {
             background-color: rgb(231, 54, 54);            
         }
     }
 
-    &_in {
+    &_transparent {
         background-color: transparent;
         transition: all .3s ease-in-out;
         border: 1px solid transparent;

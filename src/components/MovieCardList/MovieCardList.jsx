@@ -3,26 +3,25 @@ import { FreeMode, Pagination } from 'swiper'
 import 'swiper/css'
 import 'swiper/css/free-mode'
 import 'swiper/css/pagination'
-
 import { useEffect, useState } from 'react'
 import { MovieCard } from '../MovieCard/MovieCard'
-import { dataMovie } from './dataMovie'
 import styles from './MovieCardList.module.scss'
-import axios from './../../api/axios'
 import { breakPoints } from './breakpoints'
+import axios from './../../api/axios'
+import { CardLoader } from '../MovieCard/MovieCardSkeleton'
 
 export const MovieCardList = ({ title, fetchUrl }) => {
-  const [movies, setMovies] = useState([])
+  const [movies, setMovies] = useState()
   const [loading, setLoading] = useState(true)
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchMovies = async () => {
       const request = await axios.get(fetchUrl)
       setMovies(request.data.results)
       setLoading(false)
     }
 
-    fetchData()
+    fetchMovies()
   }, [])
 
   return (
@@ -38,15 +37,21 @@ export const MovieCardList = ({ title, fetchUrl }) => {
         breakpoints={breakPoints}
         modules={[FreeMode, Pagination]}
         className={styles.list}>
-        {loading ? (
-          <h1>Loading...</h1>
-        ) : (
-          movies?.map((movie, index) => (
-            <SwiperSlide key={movie.id}>
-              <MovieCard movie={movie} />
-            </SwiperSlide>
-          ))
-        )}
+        {loading
+          ? Array(9)
+              .fill(0)
+              .map((data) => (
+                <SwiperSlide>
+                  <div className={styles.fakeData}>
+                    <CardLoader />
+                  </div>
+                </SwiperSlide>
+              ))
+          : movies?.map((movie, index) => (
+              <SwiperSlide key={movie.id}>
+                <MovieCard movie={movie} />
+              </SwiperSlide>
+            ))}
       </Swiper>
     </div>
   )

@@ -1,15 +1,6 @@
 .list {
-    // width: 100%;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
-    // flex-wrap: wrap;
-    // display: grid;
-    // grid-template-rows: 1fr;
-    // grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr ;
     padding: 0 20px;
     margin-bottom: 20px;
-    // overflow-x: auto;
 }
 
 .title {
@@ -20,4 +11,19 @@
 
 span {
     color: #fff;
+}
+
+.fakeData {
+    width: 200px;
+    // border-radius: 50px;
+    // overflow: hidden;
+}
+
+@media screen and (max-width: 525px){
+    .fakeData {
+        display: flex;
+        justify-content: center;
+        // background-color: rgba(69, 69, 69, 0.25);
+        width: 100%;
+    }
 }
