@@ -1,5 +1,5 @@
 import axios from './../../api/axios'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { requests } from '../../api/requests'
 import { Button } from './../../ui/Button/Button'
 import { Header } from './../Header/Header'
@@ -38,6 +38,7 @@ export const PopularCard = () => {
           className={styles.card}
           style={{
             backgroundImage: `url('https://image.tmdb.org/t/p/original/${popularMovie?.backdrop_path}')`,
+            opacity: 1,
           }}>
           {email && <Header />}
           <div className={styles.card__content}>
