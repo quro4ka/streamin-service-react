@@ -40,8 +40,8 @@ export const MovieCardList = ({ title, fetchUrl }) => {
         {loading
           ? Array(9)
               .fill(0)
-              .map((data) => (
-                <SwiperSlide>
+              .map((_, index) => (
+                <SwiperSlide key={index}>
                   <div className={styles.fakeData}>
                     <CardLoader />
                   </div>

@@ -9,11 +9,14 @@ import { ProfilePage } from './pages/ProfilePage/ProfilePage'
 import { MoviePage } from './pages/MoviePage/MoviePage'
 import { useDispatch } from 'react-redux'
 import { setUser } from './redux/slices/userSlice'
+import { Popup } from './components/Popup/Popup'
+import { useSelector } from 'react-redux'
 
 function App() {
   const auth = getAuth()
   const navigate = useNavigate()
   const dispatch = useDispatch()
+  const popup = useSelector((state) => state.popup.popup)
 
   useEffect(() => {
     const authChanged = onAuthStateChanged(auth, (user) => {
@@ -36,6 +39,7 @@ function App() {
 
   return (
     <div className="App">
+      {popup && <Popup />}
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/movie/:id" element={<MoviePage />} />

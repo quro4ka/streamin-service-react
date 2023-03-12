@@ -1,16 +1,11 @@
-import { useEffect, useState } from 'react'
 import { requests } from '../../api/requests'
-import styles from './HomePage.module.scss'
-import { Button } from '../../ui/Button/Button'
-import { useNavigate } from 'react-router-dom'
 import { PopularCard } from './../../components/PopularСard/PopularCard'
 import { MovieCardList } from '../../components/MovieCardList/MovieCardList'
-import { getAuth, onAuthStateChanged } from 'firebase/auth'
+import { Popup } from '../../components/Popup/Popup'
+import { useSelector } from 'react-redux'
+import styles from './HomePage.module.scss'
 
 export const HomePage = () => {
-  const [isAuth, setIsAuth] = useState(false)
-  const navigate = useNavigate()
-
   return (
     <div>
       <PopularCard />
