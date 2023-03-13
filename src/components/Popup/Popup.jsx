@@ -1,14 +1,31 @@
 import { Link } from 'react-router-dom'
-import { setPopup } from '../../redux/slices/popupSlice'
 import { useDispatch } from 'react-redux'
+import { removeUser } from './../../redux/slices/userSlice'
+import { setPopup } from '../../redux/slices/popupSlice'
+import { getAuth, signOut } from 'firebase/auth'
+
 import styles from './Popup.module.scss'
 
 export const Popup = () => {
+  const auth = getAuth()
   const dispatch = useDispatch()
+
+  const logout = () => {
+    dispatch(setPopup(false))
+
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser())
+        console.log('sign outtt')
+      })
+      .catch((err) => {
+        console.log('errrrr')
+      })
+  }
 
   return (
     <>
-      <div onClick={() => dispatch(setPopup(false))} className={styles.overlay}></div>
+      <div onClick={logout} className={styles.overlay}></div>
       <div className={styles.popup}>
         <Link onClick={() => dispatch(setPopup(false))} to="/profile" className={styles.profile}>
           <svg
@@ -23,7 +40,7 @@ export const Popup = () => {
           </svg>
           <p>Profile</p>
         </Link>
-        <Link onClick={() => dispatch(setPopup(false))} to="/profile" className={styles.logout}>
+        <div onClick={logout} className={styles.logout}>
           <svg
             id="Layer_1"
             version="1.1"
@@ -35,7 +52,7 @@ export const Popup = () => {
             <path d="M102.332,114.01h-76.51c-6.518,0-11.819-5.303-11.819-11.82v-8.734c0-3.857,1.953-9.027,11.26-11.738l11.443-3.168  c1.067-0.291,2.167,0.33,2.461,1.395s-0.33,2.166-1.395,2.461l-11.417,3.16c-8.353,2.434-8.353,6.541-8.353,7.891v8.734  c0,4.313,3.508,7.82,7.819,7.82h76.51c4.312,0,7.819-3.508,7.819-7.82v-8.734c0-3.643-2.816-6.299-8.372-7.896l-10.892-3.045  c-1.064-0.297-1.686-1.4-1.388-2.465c0.298-1.063,1.398-1.689,2.464-1.387l10.906,3.049c9.326,2.682,11.281,7.867,11.281,11.744  v8.734C114.151,108.707,108.85,114.01,102.332,114.01z" />
           </svg>
           <p>Logout</p>
-        </Link>
+        </div>
       </div>
     </>
   )
