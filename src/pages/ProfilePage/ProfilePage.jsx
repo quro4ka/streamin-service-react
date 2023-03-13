@@ -2,8 +2,27 @@ import { Header } from './../../components/Header/Header'
 import { Button } from '../../ui/Button/Button'
 import styles from './ProfilePage.module.scss'
 import { dataPlans } from './dataPlans'
+import { useDispatch } from 'react-redux'
+import { setPopup } from '../../redux/slices/popupSlice'
+import { removeUser } from '../../redux/slices/userSlice'
+import { getAuth, signOut } from 'firebase/auth'
 
 export const ProfilePage = () => {
+  const dispatch = useDispatch()
+  const auth = getAuth()
+
+  const logout = () => {
+    dispatch(setPopup(false))
+
+    signOut(auth)
+      .then(() => {
+        dispatch(removeUser())
+      })
+      .catch(() => {
+        console.log('Error sign out')
+      })
+  }
+
   return (
     <>
       <Header />
@@ -45,12 +64,14 @@ export const ProfilePage = () => {
                     <span className={styles.profile__plan_left_text}>{plan.text}</span>
                   </div>
                   <div className={styles.profile__plan_right}>
-                    <Button red>Subscribe</Button>
+                    <Button>Subscribe</Button>
                   </div>
                 </div>
               ))}
             </div>
-            <Button red>Sign out</Button>
+            <Button red onClick={logout}>
+              Sign out
+            </Button>
           </div>
         </div>
       </div>

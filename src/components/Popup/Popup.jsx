@@ -16,16 +16,15 @@ export const Popup = () => {
     signOut(auth)
       .then(() => {
         dispatch(removeUser())
-        console.log('sign outtt')
       })
       .catch((err) => {
-        console.log('errrrr')
+        console.log('Error of sign out')
       })
   }
 
   return (
     <>
-      <div onClick={logout} className={styles.overlay}></div>
+      <div onClick={() => dispatch(setPopup(false))} className={styles.overlay}></div>
       <div className={styles.popup}>
         <Link onClick={() => dispatch(setPopup(false))} to="/profile" className={styles.profile}>
           <svg

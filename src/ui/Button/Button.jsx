@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import styles from './Button.module.scss'
 
-export const Button = ({ children, mr, red, transparent, width }) => {
+export const Button = ({ children, mr, red, transparent, width, onClick }) => {
   let btnStyles = styles.btn
 
   if (red) {
@@ -13,7 +13,7 @@ export const Button = ({ children, mr, red, transparent, width }) => {
   }
 
   return (
-    <button style={{ marginRight: mr, width: width }} className={btnStyles}>
+    <button onClick={onClick} style={{ marginRight: mr, width: width }} className={btnStyles}>
       {children}
     </button>
   )
